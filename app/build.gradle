@@ -1,0 +1,115 @@
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdkVersion compileSdkk
+
+    defaultConfig {
+        applicationId "com.example.starwarscharacters"
+        minSdkVersion 21
+        targetSdkVersion targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    testOptions.unitTests {
+        includeAndroidResources = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+
+    implementation appDependencies.appCompat
+    implementation appDependencies.androidxKtx
+    implementation appDependencies.constraintLayout
+    implementation appDependencies.supportV4
+    implementation appDependencies.fragmentKtx
+    implementation appDependencies.lifecycleExtensions
+
+    //Material
+    implementation appDependencies.material
+
+    //Firebase
+    implementation appDependencies.firebaseAnalytics
+    implementation appDependencies.firebaseCrashlytics
+
+    //Stetho
+    implementation appDependencies.stetho
+
+    //Animations
+    implementation appDependencies.recyclerviewAnimations
+
+    //Memory leaks
+    debugImplementation appDependencies.leakCanary
+
+    //About Libraries
+    implementation appDependencies.aboutLibraryCore
+    implementation appDependencies.aboutLibraryUi
+
+    // kiel
+    implementation appDependencies.kiel
+
+    // Koin
+    implementation appDependencies.koinAndroid
+    implementation appDependencies.koinAndroidViewModel
+
+    //Test Libs
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.robolectric
+    testImplementation testDependencies.androidxJunit
+    testImplementation testDependencies.espressoCore
+    testImplementation testDependencies.runner
+    testImplementation testDependencies.rules
+    testImplementation testDependencies.googleTruth
+    testImplementation testDependencies.archComponentTest
+    testImplementation testDependencies.coroutinesTest
+    testImplementation testDependencies.koinTest
+    androidTestImplementation testDependencies.espressoCore
+    androidTestImplementation testDependencies.runner
+    androidTestImplementation testDependencies.rules
+    androidTestImplementation testDependencies.androidxJunit
+    androidTestImplementation testDependencies.androidxCoreTest
+    androidTestImplementation testDependencies.mockWebServer
+    androidTestImplementation testDependencies.espressoContrib
+    androidTestImplementation testDependencies.espressoIntents
+    androidTestImplementation testDependencies.koinTest
+    implementation testDependencies.espressoIdlingResource
+}
