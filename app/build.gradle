@@ -40,7 +40,7 @@ android {
         androidTest.java.srcDirs += 'src/androidTest/kotlin'
     }
 
-    dataBinding {
+    viewBinding {
         enabled true
     }
 

@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/projects/StarWarsCharacters/app/src/main/res/drawable-v24/bg_search_edit_text.xml" value="0.1095" />
+        <entry key="..\:/projects/StarWarsCharacters/app/src/main/res/drawable-v24/ic_arrow_left.xml" value="0.1095" />
+        <entry key="..\:/projects/StarWarsCharacters/app/src/main/res/drawable/ic_circle_plus_red_pink.xml" value="0.1" />
+        <entry key="..\:/projects/StarWarsCharacters/app/src/main/res/drawable/ic_search.xml" value="0.1095" />
+        <entry key="..\:/projects/StarWarsCharacters/app/src/main/res/layout/activity_characters.xml" value="0.25" />
+        <entry key="..\:/projects/StarWarsCharacters/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
+        <entry key="..\:/projects/StarWarsCharacters/app/src/main/res/layout/test.xml" value="0.1796875" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
