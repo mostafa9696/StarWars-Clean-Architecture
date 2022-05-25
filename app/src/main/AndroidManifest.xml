@@ -13,11 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarWarsCharacters">
         <activity
+            android:name=".CharacterDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".CharactersActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.Design.Light.NoActionBar"
-            android:exported="true">
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

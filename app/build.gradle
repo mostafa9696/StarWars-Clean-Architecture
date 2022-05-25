@@ -40,10 +40,13 @@ android {
         androidTest.java.srcDirs += 'src/androidTest/kotlin'
     }
 
-    viewBinding {
+    dataBinding {
         enabled true
     }
 
+    viewBinding {
+        enabled true
+    }
     testOptions.unitTests {
         includeAndroidResources = true
     }
