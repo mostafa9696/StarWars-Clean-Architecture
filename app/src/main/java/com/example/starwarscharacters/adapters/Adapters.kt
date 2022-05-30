@@ -2,6 +2,10 @@ package com.example.starwarscharacters.adapters
 
 import com.example.starwarscharacters.R
 import com.example.starwarscharacters.models.CharacterPresentation
+import com.example.starwarscharacters.models.FilmPresentation
+import com.example.starwarscharacters.models.SpeciePresentation
+import com.example.starwarscharacters.viewmodel.FilmViewHolder
+import com.example.starwarscharacters.viewmodel.SpecieViewHolder
 import me.ibrahimyilmaz.kiel.adapterOf
 
 internal inline fun createSearchResultAdapter(noinline onClick: (CharacterPresentation) -> Unit) =
@@ -21,3 +25,32 @@ internal inline fun createSearchResultAdapter(noinline onClick: (CharacterPresen
             }
         )
     }
+
+
+internal inline fun createSpeciesAdapter() = adapterOf<SpeciePresentation> {
+    diff(
+        areItemsTheSame = { old, new -> old === new },
+        areContentsTheSame = { old, new -> old.name == new.name }
+    )
+    register(
+        layoutResource = R.layout.item_specie,
+        viewHolder = ::SpecieViewHolder,
+        onBindViewHolder = { specieViewHolder, _, speciePresentation ->
+            specieViewHolder.binding.species = speciePresentation
+        }
+    )
+}
+
+internal inline fun createFilmsAdapter() = adapterOf<FilmPresentation> {
+    diff(
+        areItemsTheSame = { old, new -> old === new },
+        areContentsTheSame = { old, new -> old.title == new.title }
+    )
+    register(
+        layoutResource = R.layout.item_film,
+        viewHolder = ::FilmViewHolder,
+        onBindViewHolder = { viewHolder, _, item ->
+            viewHolder.binding.film = item
+        }
+    )
+}

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/search_motion_scene"
-    tools:context=".CharactersActivity">
+    tools:context=".activities.CharactersActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/search_toolbar"
