@@ -1,11 +1,14 @@
 package com.example.starwarscharacters.activities
 
 import android.os.Bundle
+import androidx.core.widget.doOnTextChanged
 import androidx.viewbinding.ViewBinding
 import com.example.starwarscharacters.adapters.createSearchResultAdapter
 import com.example.starwarscharacters.base.BaseActivity
 import com.example.starwarscharacters.databinding.ActivityCharactersBinding
 import com.example.starwarscharacters.models.DataResource
+import com.example.starwarscharacters.utils.hide
+import com.example.starwarscharacters.utils.show
 import com.example.starwarscharacters.utils.showToast
 import com.example.starwarscharacters.utils.startActivity
 import com.example.starwarscharacters.viewmodel.CharactersViewModel

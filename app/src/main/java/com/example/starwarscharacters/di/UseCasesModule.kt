@@ -13,4 +13,13 @@ val useCasesModule = module {
     single { GetSpeciesUseCase(get()) }
 
     single { GetFilmsUseCase(get()) }
+
+    single { GetAllFavoritesUseCase(get()) }
+
+    single { InsertFavoriteUseCase(get()) }
+
+    single { DeleteFavoriteByNameUseCase(get()) }
+
+    single { GetFavoriteByNameUseCase(get()) }
+
 }

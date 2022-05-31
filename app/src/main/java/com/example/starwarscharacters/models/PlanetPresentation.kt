@@ -1,3 +1,7 @@
 package com.example.starwarscharacters.models
 
-data class PlanetPresentation(val name: String, val population: Long)
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class PlanetPresentation(val name: String, val population: Long): Parcelable

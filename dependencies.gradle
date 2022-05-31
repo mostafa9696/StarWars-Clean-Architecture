@@ -31,7 +31,7 @@ ext {
     retrofitVersion = '2.7.0'
     moshiConverterVersion = '2.7.0'
     loggingInterceptorVersion = '4.2.1'
-    roomVersion = '2.2.5'
+    roomVersion = '2.3.0'
 
     // Domain
     coroutinesCoreVersion = '1.3.3'

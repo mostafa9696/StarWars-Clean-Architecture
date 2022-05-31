@@ -1,10 +1,7 @@
 package com.example.starwarscharacters
 
 import android.app.Application
-import com.example.starwarscharacters.di.networkModule
-import com.example.starwarscharacters.di.repositoryModule
-import com.example.starwarscharacters.di.useCasesModule
-import com.example.starwarscharacters.di.viewModelModule
+import com.example.starwarscharacters.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -18,7 +15,8 @@ class StarWarsApplication: Application() {
                 networkModule,
                 useCasesModule,
                 viewModelModule,
-                repositoryModule
+                repositoryModule,
+                localModule
             )
         }
     }

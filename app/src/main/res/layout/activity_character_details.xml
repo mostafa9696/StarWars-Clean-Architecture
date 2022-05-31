@@ -14,7 +14,43 @@
             android:animateLayoutChanges="true"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="16dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:id="@+id/tv_character_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Character name"
+                    android:textColor="@color/design_default_color_secondary_variant"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/iv_fav"
+                    android:src="@drawable/ic_fav_fill"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D5D5D5"
+                android:layout_marginHorizontal="16dp"
+                />
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/character_details_layout"
                 android:layout_width="match_parent"
@@ -23,7 +59,7 @@
                 tools:context=".activities.CharacterDetailsActivity">
 
                 <TextView
-                    android:id="@+id/character_details_birth_year_title_text_view"
+                    android:id="@+id/tv_birthdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
@@ -40,12 +76,12 @@
                     android:layout_margin="16dp"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/character_details_birth_year_title_text_view"
-                    app:layout_constraintTop_toBottomOf="@id/character_details_birth_year_title_text_view"
+                    app:layout_constraintStart_toStartOf="@id/tv_birthdate"
+                    app:layout_constraintTop_toBottomOf="@id/tv_birthdate"
                     tools:text="BBY 13" />
 
                 <TextView
-                    android:id="@+id/character_details_height_title_text_view"
+                    android:id="@+id/tv_height"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
@@ -63,7 +99,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/character_details_height_title_text_view"
+                    app:layout_constraintTop_toBottomOf="@id/tv_height"
                     tools:text="123 cm" />
 
 
