@@ -7,6 +7,7 @@ import com.example.data_local.models.FavoriteWithFilms
 import com.example.data_local.models.FilmEntity
 import com.example.domain.models.Favorite
 import com.example.domain.models.Result
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FavoritesDao {
@@ -23,7 +24,7 @@ interface FavoritesDao {
 
     @Transaction
     @Query("SELECT * FROM character")
-    suspend fun getAll(): List<FavoriteWithFilms>
+    fun getAll(): Flow<List<FavoriteWithFilms>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(characterEntity: CharacterEntity): Long

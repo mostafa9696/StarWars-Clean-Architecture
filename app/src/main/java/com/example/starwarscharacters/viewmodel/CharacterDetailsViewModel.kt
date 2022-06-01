@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.domain.models.Result
 import com.example.domain.usecases.*
+import com.example.starwarscharacters.mappers.toCharacterPresentation
 import com.example.starwarscharacters.mappers.toDomain
 import com.example.starwarscharacters.mappers.toPresentation
 import com.example.starwarscharacters.models.CharacterDetailsPresentation
@@ -87,6 +88,11 @@ class CharacterDetailsViewModel(
     private fun onDetailsError(messageID: Int) {
         _characterDetailsLiveData.value =
             DataResource.Error(errorResponse = ErrorResponse(messageID))
+    }
+
+    fun setCharacterDetails(favoritePresentation: FavoritePresentation) {
+        _characterDetailsLiveData.value =
+            DataResource.Success(favoritePresentation.toCharacterPresentation())
     }
 
 }

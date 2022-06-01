@@ -2,7 +2,6 @@ package com.example.starwarscharacters.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.viewbinding.ViewBinding
 import com.example.starwarscharacters.R
 import com.example.starwarscharacters.adapters.createFilmsAdapter
@@ -24,18 +23,15 @@ class CharacterDetailsActivity : BaseActivity<ActivityCharacterDetailsBinding>()
 
     private val speciesAdapter = createSpeciesAdapter()
     private lateinit var characterPresentation: CharacterPresentation
+
     private var isFav = false
     private lateinit var favoritePresentation: FavoritePresentation
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        characterPresentation = intent.getParcelableExtra("character")!!
+        checkSourceOfOpen()
 
-        viewmodel.getCharacterUrlsDetails(characterPresentation.url)
-        viewmodel.isCharacterFavorite(characterPresentation.name)
-
-        binding.tvCharacterName.text = characterPresentation.name
         binding.ivFav.setOnClickListener {
             if (isFav)
                 viewmodel.deleteFavorite(characterPresentation.name)
@@ -44,6 +40,21 @@ class CharacterDetailsActivity : BaseActivity<ActivityCharacterDetailsBinding>()
         }
 
         observeOnLiveData()
+    }
+
+    private fun checkSourceOfOpen() {
+        // open from favorite item
+        if(intent.hasExtra("favorite_character")) {
+            favoritePresentation = intent.getParcelableExtra("favorite_character")!!
+            characterPresentation = favoritePresentation.characterPresentation
+            this.isFav = true
+            viewmodel.setCharacterDetails(favoritePresentation)
+        } else {  // open from search item
+            characterPresentation = intent.getParcelableExtra("character")!!
+
+            viewmodel.getCharacterUrlsDetails(characterPresentation.url)
+            viewmodel.isCharacterFavorite(characterPresentation.name)
+        }
     }
 
     private fun observeOnLiveData() {
@@ -69,7 +80,6 @@ class CharacterDetailsActivity : BaseActivity<ActivityCharacterDetailsBinding>()
 
         viewmodel.isFavoriteLiveData.observe(this) { isFav ->
             this.isFav = isFav
-            Log.d("ww5", isFav.toString())
             if (isFav)
                 binding.ivFav.setImageResource(R.drawable.ic_fav_fill)
             else
@@ -109,6 +119,7 @@ class CharacterDetailsActivity : BaseActivity<ActivityCharacterDetailsBinding>()
     }
 
     private fun bindCharacterBasicInfo() {
+        binding.tvCharacterName.text = characterPresentation.name
         binding.tvBirthYear.text = characterPresentation.birthYear
         binding.tvHeightInCm.text = characterPresentation.heightInCm + " cm"
     }

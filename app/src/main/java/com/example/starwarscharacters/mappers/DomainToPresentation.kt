@@ -1,13 +1,7 @@
 package com.example.starwarscharacters.mappers
 
-import com.example.domain.models.Character
-import com.example.domain.models.Film
-import com.example.domain.models.Planet
-import com.example.domain.models.Specie
-import com.example.starwarscharacters.models.CharacterPresentation
-import com.example.starwarscharacters.models.FilmPresentation
-import com.example.starwarscharacters.models.PlanetPresentation
-import com.example.starwarscharacters.models.SpeciePresentation
+import com.example.domain.models.*
+import com.example.starwarscharacters.models.*
 
 internal fun Character.toPresentation(): CharacterPresentation {
     return CharacterPresentation(
@@ -32,4 +26,17 @@ fun Specie.toPresentation(): SpeciePresentation {
 
 internal fun populationToLong(population: String): Long {
     return if (population.contains("unknown", ignoreCase = true)) 0L else population.toLong()
+}
+
+internal fun Favorite.toPresentation(): FavoritePresentation {
+    val characterPresentation =
+        CharacterPresentation(name, birthYear, height, "")
+    val planetPresentation = PlanetPresentation(planetName, populationToLong(planetPopulation))
+    val speciePresentation = SpeciePresentation(specieName, specieLanguage)
+    return FavoritePresentation(
+        characterPresentation = characterPresentation,
+        planetPresentation = planetPresentation,
+        speciePresentation = listOf(speciePresentation),
+        films = films.map { it.toPresentation() }
+    )
 }

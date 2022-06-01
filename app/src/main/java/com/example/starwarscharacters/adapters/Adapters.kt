@@ -2,6 +2,7 @@ package com.example.starwarscharacters.adapters
 
 import com.example.starwarscharacters.R
 import com.example.starwarscharacters.models.CharacterPresentation
+import com.example.starwarscharacters.models.FavoritePresentation
 import com.example.starwarscharacters.models.FilmPresentation
 import com.example.starwarscharacters.models.SpeciePresentation
 import com.example.starwarscharacters.viewmodel.FilmViewHolder
@@ -54,3 +55,22 @@ internal inline fun createFilmsAdapter() = adapterOf<FilmPresentation> {
         }
     )
 }
+
+internal inline fun createFavoriteAdapter(noinline onClick: (FavoritePresentation) -> Unit) =
+    adapterOf<FavoritePresentation> {
+        diff(
+            areItemsTheSame = { old, new -> old === new },
+            areContentsTheSame = { old, new -> old.characterPresentation.url == new.characterPresentation.url }
+        )
+        register(
+            layoutResource = R.layout.item_character,
+            viewHolder = ::FavoriteViewHolder,
+            onBindViewHolder = { viewHolder, _, favoritePresentation ->
+                viewHolder.binding.character = favoritePresentation.characterPresentation
+                viewHolder.itemView.setOnClickListener {
+                    onClick(favoritePresentation)
+                }
+            }
+        )
+    }
+

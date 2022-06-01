@@ -8,7 +8,8 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel {
         CharactersViewModel(
-            searchUseCase = get()
+            searchUseCase = get(),
+            getAllFavoritesUseCase = get()
         )
     }
     viewModel {

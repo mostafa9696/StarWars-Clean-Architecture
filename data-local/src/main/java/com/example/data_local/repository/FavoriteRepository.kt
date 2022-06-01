@@ -7,13 +7,12 @@ import com.example.domain.models.Result
 import com.example.domain.repository.IFavoritesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 class FavoriteRepository(private val favoritesDao: FavoritesDao): IFavoritesRepository {
 
-    override fun getAllFavorites(): Flow<List<Favorite>> = flow {
-        val favs = favoritesDao.getAll().map { it.toDomain() }
-        emit(favs)
-    }
+    override suspend fun getAllFavorites(): Flow<List<Favorite>> =
+        favoritesDao.getAll().map { favorites -> favorites.map { it.toDomain() } }
 
     override fun getFavoriteByName(name: String): Flow<Favorite?> = flow {
         val fav = favoritesDao.getByName(name)

@@ -3,6 +3,7 @@ package com.example.starwarscharacters.activities
 import android.os.Bundle
 import androidx.core.widget.doOnTextChanged
 import androidx.viewbinding.ViewBinding
+import com.example.starwarscharacters.adapters.createFavoriteAdapter
 import com.example.starwarscharacters.adapters.createSearchResultAdapter
 import com.example.starwarscharacters.base.BaseActivity
 import com.example.starwarscharacters.databinding.ActivityCharactersBinding
@@ -19,14 +20,21 @@ class CharactersActivity : BaseActivity<ActivityCharactersBinding>() {
     private val charactersViewModel by viewModel<CharactersViewModel>()
 
     private val searchResultAdapter = createSearchResultAdapter {
-        startActivity<CharacterDetailsActivity>  {
+        startActivity<CharacterDetailsActivity> {
             putExtra("character", it)
+        }
+    }
+
+    private val favoritesAdapter = createFavoriteAdapter {
+        startActivity<CharacterDetailsActivity> {
+            putExtra("favorite_character", it)
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        charactersViewModel.getFavorites()
         observeOnViewsListeners()
 
         observeOnLiveData()
@@ -45,7 +53,16 @@ class CharactersActivity : BaseActivity<ActivityCharactersBinding>() {
                     binding.searchResultsProgressBar.hide()
                     showToast(getString(it.error?.messageID!!))
                 }
+            }
+        }
 
+        charactersViewModel.favoritesLiveData.observe(this) { favorites ->
+            if (favorites.isEmpty()) {
+                binding.tvNoFavorites.show()
+            } else {
+                binding.tvNoFavorites.hide()
+                favoritesAdapter.submitList(favorites)
+                binding.rvFavorites.adapter = favoritesAdapter
             }
         }
     }
