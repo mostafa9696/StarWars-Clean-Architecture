@@ -46,6 +46,7 @@ class CharacterDetailsViewModel(
     fun getCharacterUrlsDetails(characterURL: String) {
         job = launchCoroutine {
             characterURLsDetailsUseCase.invoke(characterURL).collect {
+                // make 3 calls at parallel and wait until all finished to combined together in CharacterDetailsPresentation object
                 val planetResponse = async { planetUseCase.invoke(it.homeworldUrl) }
                 val speciesResponse = async { speciesUseCase.invoke(it.specieUrls) }
                 val filmsResponse = async { filmsUseCase.invoke(it.filmUrls) }
