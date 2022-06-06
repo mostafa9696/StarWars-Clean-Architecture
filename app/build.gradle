@@ -113,6 +113,10 @@ dependencies {
     testImplementation testDependencies.archComponentTest
     testImplementation testDependencies.coroutinesTest
     testImplementation testDependencies.koinTest
+    testImplementation testDependencies.MOCKITO
+    testImplementation(testDependencies.MOCKITO_KOTLIN) {
+        because "Mockito itself does't work nicely with Kotlin. so this utils are needed"
+    }
     androidTestImplementation testDependencies.espressoCore
     androidTestImplementation testDependencies.runner
     androidTestImplementation testDependencies.rules

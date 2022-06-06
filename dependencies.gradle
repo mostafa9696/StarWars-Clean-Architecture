@@ -43,6 +43,7 @@ ext {
     androidxJunitVersion = '1.1.1'
     truthVersion = '1.0'
     mockitoInlineVersion = '2.13.0'
+    MOCKITO_KOTLIN = "2.1.0"
     mockWebServerVersion = '4.2.1'
     robolectricVersion = '4.3'
     androidxTestCoreVersion = '1.0.0'
@@ -103,6 +104,8 @@ ext {
             archComponentTest     : "androidx.arch.core:core-testing:$archComponentTestVersion",
             coroutinesTest        : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesCoreVersion",
             koinTest              : "org.koin:koin-test:$koinVersion",
-            roomTest              : "androidx.room:room-testing:$roomVersion"
+            roomTest              : "androidx.room:room-testing:$roomVersion",
+            MOCKITO               : "org.mockito:mockito-inline:$mockitoInlineVersion",
+            MOCKITO_KOTLIN         : "com.nhaarman.mockitokotlin2:mockito-kotlin:$MOCKITO_KOTLIN"
     ]
 }

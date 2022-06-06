@@ -36,8 +36,11 @@ dependencies {
 
     //Persistence
     api dataDependencies.roomRuntime
+    implementation 'androidx.test.ext:junit-ktx:1.1.3'
     kapt dataDependencies.roomCompiler
     implementation dataDependencies.roomKtx
+    implementation appDependencies.lifecycleExtensions
+
 
     //Tests
     testImplementation testDependencies.runner
@@ -47,5 +50,9 @@ dependencies {
     testImplementation testDependencies.androidxJunit
     testImplementation testDependencies.coroutinesTest
     testImplementation testDependencies.robolectric
+
+    androidTestImplementation testDependencies.googleTruth
+    androidTestImplementation testDependencies.roomTest
+//    androidTestImplementation testDependencies.coroutinesTest
 }
 

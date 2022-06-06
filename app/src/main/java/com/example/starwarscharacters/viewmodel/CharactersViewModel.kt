@@ -46,7 +46,6 @@ class CharactersViewModel(
             searchUseCase.invoke(characterName).collect { characters ->
                 val charactersPresentation = characters.map { character -> character.toPresentation() }
                 _searchLiveData.value = DataResource.Success(charactersPresentation)
-
             }
         }
     }
