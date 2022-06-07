@@ -1,6 +1,7 @@
 package com.example.starwarscharacters.viewmodel
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.domain.models.Character
 import com.example.domain.usecases.GetAllFavoritesUseCase
 import com.example.domain.usecases.SearchUseCase
 import com.example.starwarscharacters.BaseViewModelTest
@@ -44,12 +45,25 @@ class SearchViewModelTest : BaseViewModelTest() {
             advanceTimeBy(600)
 
             searchViewModel.searchLiveData.observeOnce {
-                Truth.assertThat(it.data?.get(0)?.name).isEqualTo("Darth Vader")
                 Truth.assertThat(it.data).isNotEmpty()
+                Truth.assertThat(it.data?.get(0)?.name).isEqualTo("Darth Vader")
             }
-
-
         }
     }
 
+    @Test
+    fun `given an invalid search parameter when search executed then return success state`() {
+        coroutineTestRule.dispatcher.runBlockingTest {
+            Mockito.`when`(searchUseCase("Test")).thenReturn(
+                flow { emit(listOf<Character>()) }
+            )
+
+            searchViewModel.searchCharacters("Test")
+            advanceTimeBy(600)
+
+            searchViewModel.searchLiveData.observeOnce {
+                Truth.assertThat(it.data).isEmpty()
+            }
+        }
+    }
 }

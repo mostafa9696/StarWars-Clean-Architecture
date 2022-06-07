@@ -52,7 +52,7 @@ class CharacterDetailsActivity : BaseActivity<ActivityCharacterDetailsBinding>()
         } else {  // open from search item
             characterPresentation = intent.getParcelableExtra("character")!!
 
-            viewmodel.getCharacterUrlsDetails(characterPresentation.url)
+            viewmodel.getCharacterDetails(characterPresentation.url)
             viewmodel.isCharacterFavorite(characterPresentation.name)
         }
     }

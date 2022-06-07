@@ -43,7 +43,7 @@ class CharacterDetailsViewModel(
         onDetailsError(messageID)
     }
 
-    fun getCharacterUrlsDetails(characterURL: String) {
+    fun getCharacterDetails(characterURL: String) {
         job = launchCoroutine {
             characterURLsDetailsUseCase.invoke(characterURL).collect {
                 // make 3 calls at parallel and wait until all finished to combined together in CharacterDetailsPresentation object

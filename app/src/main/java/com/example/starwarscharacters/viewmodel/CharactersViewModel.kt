@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.collect
 class CharactersViewModel(
     private val searchUseCase: SearchUseCase,
     private val getAllFavoritesUseCase: GetAllFavoritesUseCase
-): BaseViewModel() {
+) : BaseViewModel() {
 
     private val _searchLiveData = MutableLiveData<DataResource<List<CharacterPresentation>>>()
 
@@ -44,7 +44,8 @@ class CharactersViewModel(
             delay(500)
             _searchLiveData.value = DataResource.Loading()
             searchUseCase.invoke(characterName).collect { characters ->
-                val charactersPresentation = characters.map { character -> character.toPresentation() }
+                val charactersPresentation =
+                    characters.map { character -> character.toPresentation() }
                 _searchLiveData.value = DataResource.Success(charactersPresentation)
             }
         }
