@@ -25,17 +25,12 @@ class FavoriteRepositoryTest : BaseTest() {
     @ExperimentalCoroutinesApi
     fun testGetAllFavorites() = runBlocking {
 
-        favoriteRepository.insertFavorite(favorite)
+        favoriteRepository.insertFavorite(favorite).first()
 
         val favorites = favoriteRepository.getAllFavorites().first()
+
+        Truth.assertThat(favorites).isNotEmpty()
         Truth.assertThat(favorites[0]).isEqualTo(favorite)
-/*
-        favorites.collect {
-            // Truth.assertThat(it).isNotEmpty()
-            Truth.assertThat(it[0]).isEqualTo(favorite)
-        }*/
-
-        // favoriteRepository.insertFavorite(favorite).collect()
-
+        Truth.assertThat(favorites[0].name).isEqualTo("Hans")
     }
 }
