@@ -83,8 +83,5 @@ View models testing on live data were guided by this [article](https://proandroi
 
 ## Screenshots
 
-|<img src="art/sh1.png" width=200/> |<img src="art/sh2.png" width=200/> |<img src="art/sh3.png" width=200/> |<img src="art/sh4.png" width=200/>|
+|<img src="art/home1.PNG" width=200/> |<img src="art/search.PNG" width=200/> |<img src="art/details.PNG" width=200/> |<img src="art/home.PNG" width=200/>|
 |:----:|:----:|:----:|:----:|
-
-|<img src="art/app.gif" width=200/>|
-|:----:|
